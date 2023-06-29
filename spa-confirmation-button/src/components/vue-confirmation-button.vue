@@ -54,13 +54,13 @@
       reset() {
         this.currentStep = 0
         this.$emit('confirmation-reset')
-      },
+      }
     },
   }
 </script>
 
 <style>
-  .confirmation__button {
+  .confirmation__button, .reset_button {
     display: block;
     background: #5B64B4;
     font-size: 0.8em;
@@ -69,6 +69,7 @@
     border-radius: 50px;
     height: 50px;
     min-width: 130px;
+    max-width: 150px;
     padding: 0em 1em;
     outline: 0;
     cursor: pointer;

@@ -1,29 +1,40 @@
-<script setup>
+<script>
 import vueConfirmationButton from './components/vue-confirmation-button.vue';
 
-const demo = {
-  data: {
-      customMessages: [
-        'Delete User',
-        'Are you sure?',
-        'Ok!'
-      ],
+export default {
+  components: {
+    vueConfirmationButton
   },
+  data: () => ({
+    customMessages: [
+      'Delete',
+      'Are you sure?',
+      'Ok!'
+    ],
+    }
+),
   methods: {
     deleteUser() {
-      alert("deleted");
+      console.log("deleteUser");
+    },
+    resetButton() {
+      this.$refs.confirmationButton.reset();
+      console.log("resetButton");
+     //this.$refs.resetButton.class = "test";
     },
   },
-  components: {
-    'vue-confirmation-button': vueConfirmationButton,
-  },
-};
+}
 </script>
 <template>
-    <div class="confirmation__button">
+    <div>
         <vue-confirmation-button
-          :messages="demo.customMessages"
-          v-on:confirmation-success="demo.deleteUser()">
+          :messages="customMessages"
+          ref="confirmationButton"
+          v-on:confirmation-success="deleteUser()" 
+          >
         </vue-confirmation-button>
+        <button @click="resetButton()" ref="resetButton" class="reset_button">
+            Reset
+        </button>
     </div>
 </template>
